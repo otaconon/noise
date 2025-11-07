@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpw4876jxub06"]
+
+[ext_resource type="PackedScene" uid="uid://bbg7yt74l0opw" path="res://scenes/hash_grid.tscn" id="1_w2twt"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.77642053, 0.63021517, 0, -0.63021517, 0.77642053, 0, 10.675906, 12.272839)
+
+[node name="HashGrid" parent="." instance=ExtResource("1_w2twt")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7497994, 0.66166526, 0, -0.66166526, 0.7497994, 0, 1.9622567, 2.4102387)
