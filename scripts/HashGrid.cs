@@ -11,7 +11,6 @@ public partial class HashGrid : Node3D
   [Export(PropertyHint.Range, "1,512")]
   private int _resolution = 16;
   private uint[] _hashes;
-  private Rid _hashesBuffer;
 
   private void ComputeHashes()
   {
@@ -26,12 +25,15 @@ public partial class HashGrid : Node3D
 
   public override void _Ready()
   {
-    var rd = RenderingServer.CreateLocalRenderingDevice();
     int length = _resolution * _resolution;
+
+    _hashes = new uint[length];
+    ComputeHashes();
 
     var multiMesh = new MultiMesh
     {
       TransformFormat = MultiMesh.TransformFormatEnum.Transform3D,
+      UseColors = true,
       InstanceCount = length,
       Mesh = _instanceMesh,
     };
@@ -41,7 +43,7 @@ public partial class HashGrid : Node3D
     };
     AddChild(_instanceMultiMesh);
 
-    float spacing = 2.0f;
+    float spacing = 1.0f;
     for (int i = 0; i < _resolution; i++)
     {
       for (int j = 0; j < _resolution; j++)
@@ -56,15 +58,10 @@ public partial class HashGrid : Node3D
         );
 
         multiMesh.SetInstanceTransform(index, transform);
+        float col = (float)_hashes[index] / (float)(length - 1);
+        GD.Print(col);
+        multiMesh.SetInstanceColor(index, new Color(col, col, col));
       }
     }
-
-    _hashes = new uint[length];
-    ComputeHashes();
-
-    byte[] bytes = new byte[length * sizeof(uint)];
-    Buffer.BlockCopy(_hashes, 0, bytes, 0, bytes.Length);
-
-    _hashesBuffer = rd.StorageBufferCreate((uint)length * 4, bytes);
   }
 }
