@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpw4876jxub06"]
+[gd_scene load_steps=3 format=3 uid="uid://dpw4876jxub06"]
 
 [ext_resource type="PackedScene" uid="uid://bbg7yt74l0opw" path="res://scenes/hash_grid.tscn" id="1_w2twt"]
+[ext_resource type="PackedScene" uid="uid://dpnkwfld21681" path="res://scenes/nice_slider.tscn" id="2_pw63i"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -11,3 +12,5 @@ transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.7497994, 0.66166526, 0, -0.66166526, 0.7497994, 0, 1.9622567, 2.4102387)
+
+[node name="NiceSlider" parent="." instance=ExtResource("2_pw63i")]

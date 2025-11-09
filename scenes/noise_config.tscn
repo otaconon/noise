@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7a3xb3tqj4yy"]
+
+[ext_resource type="Script" uid="uid://pvn68e3m3h8a" path="res://scripts/SliderValueChanged.cs" id="1_fs7at"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 182.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "noise resolution"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 16.0
+value = 16.0
+rounded = true
+
+[node name="value" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "16"
+script = ExtResource("1_fs7at")
+
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/HSlider" to="VBoxContainer/HBoxContainer/value" method="OnValueChanged"]
