@@ -22,7 +22,7 @@ layout_mode = 2
 layout_mode = 2
 text = "noise resolution"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer"]
+[node name="Slider" type="HSlider" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -36,4 +36,4 @@ layout_mode = 2
 text = "16"
 script = ExtResource("1_fs7at")
 
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer/HSlider" to="VBoxContainer/HBoxContainer/value" method="OnValueChanged"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/Slider" to="VBoxContainer/HBoxContainer/value" method="OnValueChanged"]

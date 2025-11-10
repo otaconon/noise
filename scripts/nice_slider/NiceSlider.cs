@@ -4,13 +4,21 @@ using System;
 public partial class NiceSlider : Control
 {
   [Export]
-  HSlider slider;
+  private double _minValue;
 
   [Export]
-  Label nameLabel;
+  private double _maxValue;
 
   [Export]
-  Label valueLabel;
-
+  private double _step;
   
+  public Slider Slider { get; private set; }
+
+  public override void _Ready()
+  {
+    Slider = GetNode<Slider>("SliderBox/Slider");
+    Slider.MinValue = _minValue;
+    Slider.MaxValue = _maxValue;
+    Slider.Step = _step;
+  }
 }
